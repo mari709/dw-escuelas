@@ -145,7 +145,7 @@ include 'intervals.php';
    echo "</table>\n";
    echo "<br>"; 
 
-  echo $sql;
+  //echo $sql;
 ?>
 
    <form action="index.php" method="post">
