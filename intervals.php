@@ -9,6 +9,7 @@ $sql_par = mysqli_query($link,$sql_new);
 $row2 = mysqli_fetch_array($sql_par);
 $valor = $row2['cuenta'];
 $array_claves = array();
+$array_claves[0]=1;
 $array_valor = array();
 
 
@@ -52,20 +53,47 @@ $sql_insercion = mysqli_query($link,$insert_interval);
 }
 
 
+for($d=1;$d <=$intervalo; $d++ ){
 
-
-echo "<br>";
-$sql_consulta_am = "select clave_b,amplitud FROM `intervalos` where id_intervalo = 1";
+$sql_consulta_am = "select clave_b,amplitud FROM `intervalos` where id_intervalo = '".$d."'";
 $sql_consulta_amp= mysqli_query($link,$sql_consulta_am);
 $row_respuesta = mysqli_fetch_array($sql_consulta_amp);
 $valor_respuesta_a = $row_respuesta['amplitud'];
 $valor_respuesta_b = $row_respuesta['clave_b'];
-echo $valor_respuesta_a;
+$array_valor[$d] = $valor_respuesta_a ;
+$array_claves[$d] = $valor_respuesta_b ;
+
+    
+}
+
+$mayor_valor = 0;
+$id_mayor_valor= 0;
+
+foreach($array_valor as $clave => $resultado)
+{
+
+    if($resultado > $mayor_valor){
+
+        $mayor_valor = $resultado;
+        $id_mayor_valor = $clave;
+
+    }
+
+    
+
+    
+}
 echo "<br>";
-echo $valor_respuesta_b;
+echo "Mayor diferencia positiva de inscriptos :";
+echo $mayor_valor;
+echo "<br>";
+echo "Indicador :";
 
-    //
 
+
+echo $array_claves[$id_mayor_valor];
+
+echo "<br>";
 
 
 ?>
