@@ -11,47 +11,32 @@ $valor = $row2['cuenta'];
 $array_claves = array();
 $array_claves[0]=1;
 $array_valor = array();
-
-
-
-
-
 $intervalo = $valor - 1;
 echo " registros  ";
 echo $valor;
 echo "<br>";
 
-
 for ($i = 1; $i <= $intervalo; $i++) {
-   
 $f = $i+1;
-$sql_new2 = "select x from xy where id_coordenada = '".$i."'";
+$sql_new2 = "select x,y from xy where id_coordenada = '".$i."'";
+$sql_new4 = "select x,y from xy where id_coordenada = '".$f."'";
 $sql_new_exec= mysqli_query($link,$sql_new2);
-$row_new2 = mysqli_fetch_array($sql_new_exec);
-$valora = $row_new2['x'];
-
-$sql_new3 = "select y from xy where id_coordenada = '".$i."'";
-$sql_new_exec3= mysqli_query($link,$sql_new3);
-$row_new3 = mysqli_fetch_array($sql_new_exec3);
-$valorb = $row_new3['y'];
-
-$sql_new4 = "select x from xy where id_coordenada = '".$f."'";
+$sql_new_exec3= mysqli_query($link,$sql_new2);
 $sql_new_exec4= mysqli_query($link,$sql_new4);
+$sql_new_exec5= mysqli_query($link,$sql_new4);
+$row_new2 = mysqli_fetch_array($sql_new_exec);
+$row_new3 = mysqli_fetch_array($sql_new_exec3);
 $row_new4 = mysqli_fetch_array($sql_new_exec4);
-$valord = $row_new4['x'];
-
-$sql_new5 = "select y from xy where id_coordenada = '".$f."'";
-$sql_new_exec5= mysqli_query($link,$sql_new5);
 $row_new5 = mysqli_fetch_array($sql_new_exec5);
+$valora = $row_new2['x'];
+$valorb = $row_new3['y'];
+$valord = $row_new4['x'];
 $valorc = $row_new5['y'];
-
 $amplitud = $valorc- $valorb;
-
 $insert_interval = "insert into  `dw_escuela`.`intervalos` (`clave_a`, `clave_b`,`amplitud`) values ('".$valora."','".$valord."','".$amplitud."')";
 $sql_insercion = mysqli_query($link,$insert_interval);
 
 }
-
 
 for($d=1;$d <=$intervalo; $d++ ){
 
@@ -71,29 +56,20 @@ $id_mayor_valor= 0;
 
 foreach($array_valor as $clave => $resultado)
 {
-
     if($resultado > $mayor_valor){
-
         $mayor_valor = $resultado;
         $id_mayor_valor = $clave;
-
     }
 
-    
-
-    
 }
 echo "<br>";
 echo "Mayor diferencia positiva de inscriptos :";
 echo $mayor_valor;
 echo "<br>";
 echo "Indicador :";
-
-
-
 echo $array_claves[$id_mayor_valor];
-
 echo "<br>";
+
 
 
 ?>
