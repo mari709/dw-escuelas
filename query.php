@@ -9,17 +9,13 @@ include 'conexion.php';
    $nivel = $_POST["nivel"];
    $division = $_POST["division"];
    $turno = $_POST["turno"];
-
-   
-
+   $coordY_tabla = 0;
    $tipos = array( "ESCUELA" => "Por escuela",
    "NIVEL" => "Por nivel",
    "ANNO" => "Por curso",
    "DIVISION" => "Por division",
    "CICLO" => "Por ciclo lectivo",
    "TURNO" => "Por turno");
-
-
 
    if ($tipo == "ESCUELA") {
     $sql = "SELECT escuela as x, sum(cant_alumnos) as y";
@@ -97,8 +93,7 @@ include 'conexion.php';
   if ($sql_consulta) {
     while ($row = mysqli_fetch_array($sql_consulta)) {
 
-      $datos[$row["x"]] = $row["y"]; ///---
-      
+      $datos[$row["x"]] = $row["y"]; 
       $sql_elinsert ="insert into  `dw_escuela`.`xy` (`x`, `y`) values ('".$row["x"]."','".$row["y"]."')";
       $sql_resultado = mysqli_query($link,$sql_elinsert);
    
@@ -110,10 +105,12 @@ include 'conexion.php';
 
 include 'intervals.php';
 
-$sql_obtener_y = "select y from xy where x = '".$indicador."'";
-$sql_obtener_y_exec = mysqli_query($link,$sql_obtener_y);
-$sql_resp_y = mysqli_fetch_array($sql_obtener_y_exec);
-$valor_y = $sql_resp_y['y'];
+foreach($datos as $coordX => $coordY){
+
+  if($indicador == $coordX)
+  {$coordY_tabla = $coordY; }
+  
+}
 
    echo "<br>";
    echo "<table border=1 cellspacing=0 style=\"border-collapse: collapse\">\n";
@@ -122,8 +119,7 @@ $valor_y = $sql_resp_y['y'];
    foreach($datos as $key => $value) {
 
      $alto = round($value/100);
-
-     if ($value == $valor_y){
+     if ($value == $coordY_tabla){
 
       echo "<td width=30 align=center valign=bottom><img src=\"rojo.jpg\" width=20 height=$alto border=0> </td>\n";
      }
