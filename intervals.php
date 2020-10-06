@@ -3,7 +3,6 @@
 
 $sql_truncate = "truncate table intervalos";
 $sql_truncate_query = mysqli_query($link,$sql_truncate);
-
 $sql_new = "select count(*) as cuenta from`xy`";
 $sql_par = mysqli_query($link,$sql_new);
 $row2 = mysqli_fetch_array($sql_par);
@@ -18,17 +17,17 @@ echo "<br>";
 
 for ($i = 1; $i <= $intervalo; $i++) {
 $f = $i+1;
-$sql_new2 = "select x,y from xy where id_coordenada = '".$i."'";
+$sql_new2 = "select x,y from xy where id_coordenada = '".$i."'"; 
 $sql_new4 = "select x,y from xy where id_coordenada = '".$f."'";
-$sql_new_exec= mysqli_query($link,$sql_new2);
+$sql_new_exec= mysqli_query($link,$sql_new2);   
 $sql_new_exec3= mysqli_query($link,$sql_new2);
 $sql_new_exec4= mysqli_query($link,$sql_new4);
 $sql_new_exec5= mysqli_query($link,$sql_new4);
-$row_new2 = mysqli_fetch_array($sql_new_exec);
+$row_new2 = mysqli_fetch_array($sql_new_exec);  
 $row_new3 = mysqli_fetch_array($sql_new_exec3);
 $row_new4 = mysqli_fetch_array($sql_new_exec4);
 $row_new5 = mysqli_fetch_array($sql_new_exec5);
-$valora = $row_new2['x'];
+$valora = $row_new2['x']; 
 $valorb = $row_new3['y'];
 $valord = $row_new4['x'];
 $valorc = $row_new5['y'];
@@ -48,7 +47,6 @@ $valor_respuesta_b = $row_respuesta['clave_b'];
 $array_valor[$d] = $valor_respuesta_a ;
 $array_claves[$d] = $valor_respuesta_b ;
 
-    
 }
 
 $mayor_valor = 0;
@@ -67,9 +65,10 @@ echo "Mayor diferencia positiva de inscriptos :";
 echo $mayor_valor;
 echo "<br>";
 echo "Indicador :";
-echo $array_claves[$id_mayor_valor];
+
+$indicador =  $array_claves[$id_mayor_valor];
+echo $indicador; 
+
 echo "<br>";
-
-
 
 ?>

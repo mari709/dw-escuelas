@@ -97,38 +97,43 @@ include 'conexion.php';
   if ($sql_consulta) {
     while ($row = mysqli_fetch_array($sql_consulta)) {
 
-      $datos[$row["x"]] = $row["y"];
+      $datos[$row["x"]] = $row["y"]; ///---
       
       $sql_elinsert ="insert into  `dw_escuela`.`xy` (`x`, `y`) values ('".$row["x"]."','".$row["y"]."')";
       $sql_resultado = mysqli_query($link,$sql_elinsert);
    
     }
-   
     
    mysqli_free_result($sql_consulta);
     
   }
 
-
-
-
 include 'intervals.php';
 
-
+$sql_obtener_y = "select y from xy where x = '".$indicador."'";
+$sql_obtener_y_exec = mysqli_query($link,$sql_obtener_y);
+$sql_resp_y = mysqli_fetch_array($sql_obtener_y_exec);
+$valor_y = $sql_resp_y['y'];
 
    echo "<br>";
    echo "<table border=1 cellspacing=0 style=\"border-collapse: collapse\">\n";
    echo "<tr>\n";
      echo "<td width=50 height=20></td>\n";
    foreach($datos as $key => $value) {
-       
+
      $alto = round($value/100);
-     
-     echo "<td width=30 align=center valign=bottom><img src=\"x.jpg\" width=20 height=$alto border=0> </td>\n";
+
+     if ($value == $valor_y){
+
+      echo "<td width=30 align=center valign=bottom><img src=\"rojo.jpg\" width=20 height=$alto border=0> </td>\n";
+     }
+     else{
+      echo "<td width=30 align=center valign=bottom><img src=\"x.jpg\" width=20 height=$alto border=0> </td>\n";
+     }
+    
    }
    echo "</tr>\n";
    echo "<tr>\n";
-
    
    echo "<td width=30>".substr($tipos[$tipo],4,100)."</td>\n";
    foreach($datos as $key => $value) {
@@ -144,15 +149,12 @@ include 'intervals.php';
    echo "</tr>\n";
    echo "</table>\n";
    echo "<br>"; 
-
-  //echo $sql;
+  
 ?>
 
    <form action="index.php" method="post">
   
  <input type=submit value="Volver" /></p>
- 
- 
  
   </form>
 
