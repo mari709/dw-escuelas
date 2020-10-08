@@ -2,13 +2,15 @@
 
 include 'conexion.php';
 
-   $tipo = $_POST["tipo"];
-   $escuela = $_POST["escuela"];
-   $ciclo = $_POST["ciclo"];
-   $anno = $_POST["anno"];
-   $nivel = $_POST["nivel"];
-   $division = $_POST["division"];
-   $turno = $_POST["turno"];
+
+
+$create_xy = "create table if not exists `dw_escuela`.`xy` ( `id_coordenada` INT NOT NULL AUTO_INCREMENT , `x` VARCHAR(11) NOT NULL , `y` INT(11) NOT NULL , PRIMARY KEY (`id_coordenada`))";
+$create_intervalos = "create table if not exists `dw_escuela`.`intervalos` ( `id_intervalo` INT(6) NOT NULL AUTO_INCREMENT , `clave_a` INT(11) NOT NULL , `clave_b` INT(11) NOT NULL , `amplitud` INT(10) NOT NULL , PRIMARY KEY (`id_intervalo`))";
+
+$create_xy_query = mysqli_query($link,$create_xy);
+$create_intervalos_query = mysqli_query($link,$create_intervalos);
+
+
    $coordY_tabla = 0;
    $tipos = array( "ESCUELA" => "Por escuela",
    "NIVEL" => "Por nivel",
@@ -16,6 +18,7 @@ include 'conexion.php';
    "DIVISION" => "Por division",
    "CICLO" => "Por ciclo lectivo",
    "TURNO" => "Por turno");
+
 
    if ($tipo == "ESCUELA") {
     $sql = "SELECT escuela as x, sum(cant_alumnos) as y";
@@ -145,13 +148,9 @@ foreach($datos as $coordX => $coordY){
    echo "</tr>\n";
    echo "</table>\n";
    echo "<br>"; 
-  
+   
 ?>
 
-   <form action="index.php" method="post">
-  
- <input type=submit value="Volver" /></p>
- 
-  </form>
+   
 
 
