@@ -34,13 +34,13 @@ $sql_q = mysqli_query($link,$consulta_escuelas);
  
   }
 
-//foreach($ciclo_array as $dato => $resultado){
+foreach($ciclo_array as $dato => $resultado){
 
-  //  echo $dato;
+    echo $dato;
 
     
-    //echo "<br>";
-//}
+    echo "<br>";
+}
 
 
   
