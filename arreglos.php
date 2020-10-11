@@ -2,7 +2,12 @@
 // arreglos para escuela-ciclo lectivo - curso
 
 $escuela_array = array();
+$ciclo_array = array();
+$curso_array = array();
+
 $contador = '0';
+$contadorb = '0';
+$contadorc ='0';
 
 $sql_q = mysqli_query($link,$consulta_escuelas);
 
@@ -12,31 +17,30 @@ $sql_q = mysqli_query($link,$consulta_escuelas);
     $escuela_array[$contador] = $row_rd["escuela"];
  
   }
+  $sql_r = mysqli_query($link,$consulta_ciclos);
 
-  /*
-  echo "<br>";
-  //echo $contador;
-//-------------------
-  foreach($escuela_array as $clave => $resultado)
-  {
+  while ($row_rf = mysqli_fetch_array($sql_r)) {
+
+    $contadorb++;
+    $ciclo_array[$contadorb] = $row_rf["ciclo_lectivo"];
+ 
+  }
+  $sql_s = mysqli_query($link,$consulta_anno);
+
+  while ($row_ri = mysqli_fetch_array($sql_s)) {
+
+    $contadorc++;
+    $curso_array[$contadorc] = $row_ri["anno"];
+ 
+  }
+
+foreach($ciclo_array as $dato => $resultado){
 
     echo $resultado;
     echo "<br>";
-  }
- // ----------------
+}
+
+
   
- */
-  
-
-
-
-
-
-
-    
-
-   
- 
-
 
 ?>

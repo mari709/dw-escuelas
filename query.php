@@ -1,14 +1,7 @@
 <?php
 
 
-
-
-
-
 include 'conexion.php';
-
-   
-  
 
 
    $coordY_tabla = 0;
