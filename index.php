@@ -69,23 +69,25 @@ echo "<td width=150>Ciclo lectivo</td>\n";
 echo "<td width=250> <select name =ciclo size=1 onchange=this.form.submit()>\n";
 echo "<option value= ''> </option>";
 
-/*
-foreach($ciclo_array as $claveb => $datob){
 
-  if ($datob == $ciclo) {
-    echo "<option selected value=\"$claveb\">$datob</option>";
+foreach($ciclo_array as $claved => $datod){
+
+  if ($dato == $ciclo) {
+    echo "<option selected value=\"$datod\">$datod</option>";
       } 
      else
       {
-        echo "<option value=\"$claveb\">$datob</option>";
+        echo "<option value=\"$datod\">$datod</option>";
       }
     }
-  
-*/
+ 
 
 
-//---
 
+
+
+
+/*
 echo '<option value = "">'.$ciclo.'</option>';
 
 $consulta_ciclo_dos = mysqli_query($link,$consulta_ciclos);
@@ -95,7 +97,7 @@ while($row_tres = mysqli_fetch_array($consulta_ciclo_dos)){
   echo '<option value = "'.$row_tres['ciclo_lectivo'].'">'.$row_tres[ciclo_lectivo].'</option>';
  }
 }
-
+*/
 //--
 echo "</select>";
 echo "</td>";

@@ -81,6 +81,8 @@ include 'conexion.php';
   }
   $sql .= " $agrupar";
 
+echo $sql;
+
   $sql_consulta = mysqli_query($link,$sql);
   $datos = array();
   $sql_borrado = mysqli_query($link, "TRUNCATE TABLE xy");
@@ -144,10 +146,6 @@ foreach($datos as $coordX => $coordY){
   
 ?>
 
-   <form action="index.php" method="post">
   
- <input type=submit value="Volver" /></p>
- 
-  </form>
 
 
