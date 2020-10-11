@@ -1,10 +1,11 @@
 <?php
 // version Mansueto - otero corregida
 
+// Notificar solamente errores de ejecución
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+
 include 'conexion.php';
 include 'arreglos.php';
-
-echo "<br>";
 
 if(isset($_POST["ciclo"])){$ciclo = $_POST["ciclo"];}; //<-----$ciclo_lectivo
 if (isset($_POST["escuela"])){$escuela = $_POST["escuela"];};  //<----- $escuela
@@ -20,19 +21,32 @@ $tipos = array( "ESCUELA" => "Por escuela",
 "DIVISION" => "Por division",
 "CICLO" => "Por ciclo lectivo",
 "TURNO" => "Por turno");
+?>
 
-echo "<HTML>\n";
-echo "<Head>\n";
-echo "</Head>\n";
-echo "<Body>\n";
-echo "<br>";
+<!doctype html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+  </head>
 
-echo "<FORM name=f method=\"POST\" action=\"index.php\">\n";
-echo "<table width=\"500\" border=0 cellspacing=0 style=\"border-collapse: collapse\">\n";
-echo "<tr>\n";
-echo "<td width=50> &nbsp;</td>\n";
-echo "<td width=150>Tipo</td>\n";
-echo "<td width=250><select name=tipo size=1  onchange=this.form.submit()  >\n";
+  <body>
+  <div class="container">
+    <div class="container-fluid bg-contenedor rounded p-3 mt-3">
+  <h2><strong>Realizar consulta</strong></h2>
+
+    <FORM class="pl-2" name="f" method="POST" action="index.php"> 
+      <br>
+      <table>
+    <tr>
+    <td>Tipo</td>
+
+<?php
+
+
+echo "<td><select class=form-control name=tipo size=1  onchange=this.form.submit()  >\n";
+echo "<option value= ''> </option>";
+
 foreach ($tipos as $key => $dsc) {
 if ($key == $tipo) {
 echo "<option selected value=\"$key\">$dsc</option>";
@@ -41,12 +55,10 @@ echo "<option selected value=\"$key\">$dsc</option>";
   }
 }
 echo "</select></td>\n";
-echo "<td width=50> &nbsp;</td>\n";
 echo "</tr>\n";
 echo "<tr>\n";
-echo "<td width=50> &nbsp;</td>\n";
 echo "<td width=150>Escuela</td>\n";
-echo "<td width=250><select name =escuela size=1 onchange=this.form.submit()>\n";
+echo "<td width=250><select class=form-control name =escuela size=1 onchange=this.form.submit()>\n";
 echo "<option value= ''> </option>";
 foreach($escuela_array as $clave => $dato){
 
@@ -61,12 +73,10 @@ foreach($escuela_array as $clave => $dato){
  
 echo "</select>";
 echo "</td>";
-echo "<td width=50> &nbsp;</td>\n";
 echo "</tr>\n";
 echo "<tr>\n";
-echo "<td width=50> &nbsp;</td>\n";
 echo "<td width=150>Ciclo lectivo</td>\n";
-echo "<td width=250> <select name =ciclo size=1 onchange=this.form.submit()>\n";
+echo "<td width=250> <select class=form-control name =ciclo size=1 onchange=this.form.submit()>\n";
 echo "<option value= ''> </option>";
 
 foreach($ciclo_array as $claved => $datod){
@@ -82,13 +92,11 @@ foreach($ciclo_array as $claved => $datod){
 
 echo "</select>";
 echo "</td>";
-echo "<td width=50> &nbsp;</td>\n";
 echo "</tr>\n";
 echo "<tr>\n";
-echo "<td width=50> &nbsp;</td>\n";
 echo "<td width=150>Curso</td>\n";
 
-echo "<td width=250> <select name =anno size=1 onchange=this.form.submit()>\n";
+echo "<td width=250> <select class=form-control name =anno size=1 onchange=this.form.submit()>\n";
 
 echo "<option value= ''> </option>";
 
@@ -107,14 +115,12 @@ foreach($curso_array as $clavee => $datoe){
 echo "</select>";
 
 echo "</td>\n";
-echo "<td width=50> &nbsp;</td>\n";
 echo "</tr>\n";
 
 echo "<tr>\n";
 
-echo "<td width=50> &nbsp;</td>\n";
 echo "<td width=150>Nivel</td>\n";
-echo "<td width=250> <select name =nivel size=1 onchange=this.form.submit()>\n";
+echo "<td width=250> <select class=form-control name =nivel size=1 onchange=this.form.submit()>\n";
 
 $consulta_id_nivel = "select id,dsc from niveles where id = '$nivel'";
 
@@ -134,15 +140,13 @@ while($row_cinco = mysqli_fetch_array($consulta_niveles_dos)){
 
 echo "</select>";
 echo "</td>\n";
-echo "<td width=50> &nbsp;</td>\n";
 echo "</tr>\n";
 
 echo "<tr>\n";
-echo "<td width=50> &nbsp;</td>\n";
 echo "<td width=150>Division</td>\n";
 
 
-echo "<td width=250> <select name =division size=1 onchange=this.form.submit()>\n";
+echo "<td width=250> <select class=form-control name =division size=1 onchange=this.form.submit()>\n";
 
 $consulta_id_division = "select id,dsc from divisiones where id = '$division'";
 
@@ -161,14 +165,12 @@ while($row_seis = mysqli_fetch_array($consulta_division_dos)){
 }
 
 echo "</td>\n";
-echo "<td width=50> &nbsp;</td>\n";
 echo "</tr>\n";
 
 echo "<tr>\n";
-echo "<td width=50> &nbsp;</td>\n";
 echo "<td width=150>Turno</td>\n";
 
-echo "<td width=250> <select name =turno size=1 onchange=this.form.submit()>\n";
+echo "<td width=250> <select class=form-control name =turno size=1 onchange=this.form.submit()>\n";
 
 $consulta_id_turno = "select id,dsc from turnos where id = '$turno'";
 
@@ -188,12 +190,10 @@ while($row_siete = mysqli_fetch_array($consulta_turno_dos)){
 
 
 echo "</td>\n";
-echo "<td width=50> &nbsp;</td>\n";
 echo "</tr>\n";
 
 echo "<tr>\n";
 echo "<td> &nbsp;</td>\n";
-echo "<td></td>\n";
 
 //echo "<td><input type=submit value=\"ver\"></td>\n";
 
@@ -207,11 +207,13 @@ echo "</form>\n";
 
 ?>
 
-<form action="index.php" method="post">
-  
- <input type=submit value="Reset" /></p>
- 
+<form class="pl-2" action="index.php" method="post">
+      <input type=submit value="Reset" class="btn btn-warning" />
   </form>
+</div>
+</div>
+<div class="container">
+<div class="container-fluid">
 <?php
 
 if(isset($tipo)){
@@ -224,3 +226,6 @@ if(isset($tipo)){
 
 
 ?>
+</div>
+</div>
+</body>
