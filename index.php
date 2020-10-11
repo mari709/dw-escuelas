@@ -72,7 +72,7 @@ echo "<option value= ''> </option>";
 
 foreach($ciclo_array as $claved => $datod){
 
-  if ($dato == $ciclo) {
+  if ($datod == $ciclo) {
     echo "<option selected value=\"$datod\">$datod</option>";
       } 
      else
