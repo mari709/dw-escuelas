@@ -69,7 +69,6 @@ echo "<td width=150>Ciclo lectivo</td>\n";
 echo "<td width=250> <select name =ciclo size=1 onchange=this.form.submit()>\n";
 echo "<option value= ''> </option>";
 
-
 foreach($ciclo_array as $claved => $datod){
 
   if ($datod == $ciclo) {
@@ -80,43 +79,30 @@ foreach($ciclo_array as $claved => $datod){
         echo "<option value=\"$datod\">$datod</option>";
       }
     }
- 
 
-
-
-
-
-
-/*
-echo '<option value = "">'.$ciclo.'</option>';
-
-$consulta_ciclo_dos = mysqli_query($link,$consulta_ciclos);
-while($row_tres = mysqli_fetch_array($consulta_ciclo_dos)){
-
-  if($row_tres["ciclo_lectivo"] !== $ciclo){
-  echo '<option value = "'.$row_tres['ciclo_lectivo'].'">'.$row_tres[ciclo_lectivo].'</option>';
- }
-}
-*/
-//--
 echo "</select>";
 echo "</td>";
 echo "<td width=50> &nbsp;</td>\n";
 echo "</tr>\n";
 echo "<tr>\n";
 echo "<td width=50> &nbsp;</td>\n";
-echo "<td width=150>Curso</td>\n";//name
+echo "<td width=150>Curso</td>\n";
 
 echo "<td width=250> <select name =anno size=1 onchange=this.form.submit()>\n";
-echo '<option value = "">'.$anno.'</option>';
 
-$consulta_anno_dos = mysqli_query($link,$consulta_anno);
-while($row_cuatro = mysqli_fetch_array($consulta_anno_dos)){
+echo "<option value= ''> </option>";
 
-  if($row_cuatro["anno"] !== $anno){
-  echo '<option value = "'.$row_cuatro['anno'].'">'.$row_cuatro[anno].'</option>';
-  }
-}
+foreach($curso_array as $clavee => $datoe){
+
+  if ($datoe == $anno) {
+    echo "<option selected value=\"$datoe\">$datoe</option>";
+      } 
+     else
+      {
+        echo "<option value=\"$datoe\">$datoe</option>";
+      }
+    }
+
 
 echo "</select>";
 
