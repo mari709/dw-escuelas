@@ -1,8 +1,16 @@
 <?php
 
+
+
+
+
+
 include 'conexion.php';
 
    
+  
+
+
    $coordY_tabla = 0;
    $tipos = array( "ESCUELA" => "Por escuela",
    "NIVEL" => "Por nivel",
@@ -98,6 +106,7 @@ include 'conexion.php';
   }
 
 include 'intervals.php';
+
 
 foreach($datos as $coordX => $coordY){
 

@@ -1,6 +1,13 @@
 
 <?php
 
+
+$sql_crea_xy = "create table if not exists `dw_escuela`.`xy` ( `id_coordenada` INT(11) NOT NULL AUTO_INCREMENT , `x` VARCHAR(11) NOT NULL , `y` INT(11) NOT NULL , PRIMARY KEY (`id_coordenada`))";
+$sql_crea_intervalos = "create table if not exists `dw_escuela`.`intervalos` ( `id_intervalo` INT(6) NOT NULL AUTO_INCREMENT , `clave_a` INT(11) NOT NULL , `clave_b` INT(11) NOT NULL , `amplitud` INT(11) NOT NULL , PRIMARY KEY (`id_intervalo`))";
+$sql_CXY = mysqli_query($link,$sql_crea_xy);
+$sql_CI = mysqli_query($link,$sql_crea_intervalos);
+
+
 $sql_truncate = "truncate table intervalos";
 $sql_truncate_query = mysqli_query($link,$sql_truncate);
 $sql_new = "select count(*) as cuenta from`xy`";

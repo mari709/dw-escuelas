@@ -1,34 +1,18 @@
 <?php
 // version Mansueto - otero corregida
 
-session_start();
 include 'conexion.php';
-$consulta_escuelas = "select escuela from inscripciones group by escuela";
-$consulta_ciclos = "select ciclo_lectivo from inscripciones group by ciclo_lectivo";
-$consulta_anno = "select anno from inscripciones group by anno";
-$consulta_niveles = "select id,dsc from niveles";
-$consulta_division = "select id,dsc from divisiones";
-$consulta_turno = "select id,dsc from turnos";
+include 'arreglos.php';
 
-
-
-$nivel ="";
-$escuela ="";
-$ciclo ="";
-$anno ="";
-$division = "";
-$turno = "";
+echo "<br>";
 
 if(isset($_POST["ciclo"])){$ciclo = $_POST["ciclo"];}; //<-----$ciclo_lectivo
 if (isset($_POST["escuela"])){$escuela = $_POST["escuela"];};  //<----- $escuela
-
 if (isset($_POST["tipo"])){$tipo = $_POST["tipo"];};
 if (isset($_POST["anno"])){$anno = $_POST["anno"];}; //<---$curso
 if (isset($_POST["nivel"])){$nivel = $_POST["nivel"];};//<---$nivel
-if (isset($_POST["division"])){$division = $_POST["division"];};
-if (isset($_POST["turno"])){$turno = $_POST["turno"];};
-
-
+if (isset($_POST["division"])){$division = $_POST["division"];};//<---$division
+if (isset($_POST["turno"])){$turno = $_POST["turno"];};//<---$turno
 
 $tipos = array( "ESCUELA" => "Por escuela",
 "NIVEL" => "Por nivel",
@@ -63,6 +47,22 @@ echo "<tr>\n";
 echo "<td width=50> &nbsp;</td>\n";
 echo "<td width=150>Escuela</td>\n";//name
 echo "<td width=250><select name =escuela size=1 onchange=this.form.submit()>\n";
+echo "<option value= ''> </option>";
+foreach($escuela_array as $clave => $dato){
+
+  if ($dato == $escuela) {
+    echo "<option selected value=\"$clave\">$dato</option>";
+     } else {
+        echo "<option value=\"$clave\">$dato</option>";
+      }
+    }
+
+
+ // echo "<option value=\"$dato\">$dato</option>";
+
+
+
+/*
 echo '<option value = "">'. $escuela.'</option>';
 
 $consulta_escuela_dos = mysqli_query($link,$consulta_escuelas);
@@ -72,6 +72,7 @@ while($row_dos = mysqli_fetch_array($consulta_escuela_dos)){
   echo '<option value = "'.$row_dos['escuela'].'">'.$row_dos[escuela].'</option>';
   }
 }
+*/
 
 echo "</select>";
 echo "</td>";
@@ -223,8 +224,10 @@ echo "</form>\n";
 if(isset($tipo)){
 
   include 'query.php';
+  echo "<br>";
+  
 }
 
-session_destroy();
+
 
 ?>
