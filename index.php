@@ -44,7 +44,7 @@ $tipos = array( "ESCUELA" => "Por escuela",
 <?php
 
 
-echo "<td><select class=form-control name=tipo size=1  onchange=this.form.submit()  >\n";
+echo "<td><select class=\"form-control form-control-sm\" name=tipo size=1  onchange=this.form.submit()  >\n";
 echo "<option value= ''> </option>";
 
 foreach ($tipos as $key => $dsc) {
@@ -58,7 +58,7 @@ echo "</select></td>\n";
 echo "</tr>\n";
 echo "<tr>\n";
 echo "<td width=150>Escuela</td>\n";
-echo "<td width=250><select class=form-control name =escuela size=1 onchange=this.form.submit()>\n";
+echo "<td width=250><select class=\"form-control form-control-sm\" name =escuela size=1 onchange=this.form.submit()>\n";
 echo "<option value= ''> </option>";
 foreach($escuela_array as $clave => $dato){
 
@@ -76,7 +76,7 @@ echo "</td>";
 echo "</tr>\n";
 echo "<tr>\n";
 echo "<td width=150>Ciclo lectivo</td>\n";
-echo "<td width=250> <select class=form-control name =ciclo size=1 onchange=this.form.submit()>\n";
+echo "<td width=250> <select class=\"form-control form-control-sm\" name =ciclo size=1 onchange=this.form.submit()>\n";
 echo "<option value= ''> </option>";
 
 foreach($ciclo_array as $claved => $datod){
@@ -96,7 +96,7 @@ echo "</tr>\n";
 echo "<tr>\n";
 echo "<td width=150>Curso</td>\n";
 
-echo "<td width=250> <select class=form-control name =anno size=1 onchange=this.form.submit()>\n";
+echo "<td width=250> <select class=\"form-control form-control-sm\" name =anno size=1 onchange=this.form.submit()>\n";
 
 echo "<option value= ''> </option>";
 
@@ -120,7 +120,7 @@ echo "</tr>\n";
 echo "<tr>\n";
 
 echo "<td width=150>Nivel</td>\n";
-echo "<td width=250> <select class=form-control name =nivel size=1 onchange=this.form.submit()>\n";
+echo "<td width=250> <select class=\"form-control form-control-sm\" name =nivel size=1 onchange=this.form.submit()>\n";
 
 $consulta_id_nivel = "select id,dsc from niveles where id = '$nivel'";
 
@@ -146,7 +146,7 @@ echo "<tr>\n";
 echo "<td width=150>Division</td>\n";
 
 
-echo "<td width=250> <select class=form-control name =division size=1 onchange=this.form.submit()>\n";
+echo "<td width=250> <select class=\"form-control form-control-sm\" name =division size=1 onchange=this.form.submit()>\n";
 
 $consulta_id_division = "select id,dsc from divisiones where id = '$division'";
 
@@ -170,7 +170,7 @@ echo "</tr>\n";
 echo "<tr>\n";
 echo "<td width=150>Turno</td>\n";
 
-echo "<td width=250> <select class=form-control name =turno size=1 onchange=this.form.submit()>\n";
+echo "<td width=250> <select class=\"form-control form-control-sm\" name =turno size=1 onchange=this.form.submit()>\n";
 
 $consulta_id_turno = "select id,dsc from turnos where id = '$turno'";
 
@@ -212,7 +212,7 @@ echo "</form>\n";
   </form>
 </div>
 </div>
-<div class="container">
+<div class="container pt-3">
 <div class="container-fluid">
 <?php
 
