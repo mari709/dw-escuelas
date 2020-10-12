@@ -20,7 +20,6 @@ $array_valor = array();
 $intervalo = $valor - 1;
 echo " registros  ";
 echo $valor;
-echo "<br>";
 
 for ($i = 1; $i <= $intervalo; $i++) {
 $f = $i+1;
@@ -67,14 +66,15 @@ foreach($array_valor as $clave => $resultado)
     }
 
 }
+/*
 echo "<br>";
 echo "Mayor diferencia positiva de inscriptos :";
 echo $mayor_valor;
 echo "<br>";
 echo "Indicador :";
-
+*/
 $indicador =  $array_claves[$id_mayor_valor];
-echo $indicador; 
+//echo $indicador; 
 
 echo "<br>";
 

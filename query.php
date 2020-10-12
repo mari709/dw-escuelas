@@ -141,6 +141,16 @@ foreach($datos as $coordX => $coordY){
    echo "</tr>\n";
    echo "</table>\n";
    echo "<br>"; 
+
+echo "Mayor diferencia positiva de inscriptos :";
+echo $mayor_valor;
+echo "<br>";
+echo "Indicador :";
+
+$indicador =  $array_claves[$id_mayor_valor];
+echo $indicador; 
+
+echo "<br>";
   
 ?>
 
