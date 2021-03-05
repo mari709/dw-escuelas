@@ -1,4 +1,3 @@
-
 <?php
 
 $consulta_escuelas = "select escuela from inscripciones group by escuela";

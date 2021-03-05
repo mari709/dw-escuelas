@@ -1,14 +1,7 @@
 <?php
 
 
-
-
-
-
 include 'conexion.php';
-
-   
-  
 
 
    $coordY_tabla = 0;
@@ -115,7 +108,7 @@ foreach($datos as $coordX => $coordY){
   
 }
 
-   echo "<br>";
+   echo "<div class=table-responsive>";
    echo "<table border=1 cellspacing=0 style=\"border-collapse: collapse\">\n";
    echo "<tr>\n";
      echo "<td width=50 height=20></td>\n";
@@ -147,14 +140,20 @@ foreach($datos as $coordX => $coordY){
    }
    echo "</tr>\n";
    echo "</table>\n";
-   echo "<br>"; 
+   echo "</div>"; 
+
+echo "Mayor diferencia positiva de inscriptos :";
+echo $mayor_valor;
+echo "<br>";
+echo "Indicador :";
+
+$indicador =  $array_claves[$id_mayor_valor];
+echo $indicador; 
+
+echo "<br>";
   
 ?>
 
-   <form action="index.php" method="post">
   
- <input type=submit value="Volver" /></p>
- 
-  </form>
 
 
